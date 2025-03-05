@@ -1,0 +1,20 @@
+{
+    "task_name": "ifeval",
+    "primary_metric": "prompt_level_loose_acc",
+    "split": "train",
+    "use_chat_format": true,
+    "generation_kwargs": {
+        "max_gen_toks": 1024,
+        "do_sample": false,
+        "temperature": 0.0,
+        "stop_sequences": []
+    },
+    "metric_kwargs": {
+        "aggregation_levels": ["prompt", "inst"],
+        "strictness_levels": ["strict", "loose"],
+        "output_individual_metrics": true
+    },
+    "metadata": {
+        "regimes": ["Tulu"]
+    }
+}

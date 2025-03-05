@@ -1,0 +1,25 @@
+{
+    "task_name": "gpqa",
+    "split": "train",
+    "use_chat_format": true,
+    "num_shots": 0,
+    "chat_overrides": {
+        "context_kwargs": {
+            "assistant_prefix": null,
+            "fewshot_as_multiturn": false,
+            "description": "Answer the following multiple-choice question by giving the correct answer letter in parentheses. Provide CONCISE reasoning for the answer, and make sure to finish the response with \"Therefore, the answer is (ANSWER_LETTER)\" where (ANSWER_LETTER) is one of (A), (B), (C), (D).\n\n",
+            "final_description": "\n\nAnswer the above question and REMEMBER to finish your response with the exact phrase \"Therefore, the answer is (ANSWER_LETTER)\" where (ANSWER_LETTER) is one of (A), (B), (C), (D)."
+        },
+        "generation_kwargs": {
+            "stop_sequences": [],
+            "max_gen_toks": 1024,
+            "truncate_context": true
+        },
+        "metric_kwargs": {
+            "answer_format_regex": "Therefore, the answer is \\(([A-D])\\)"
+        }
+    },
+    "metadata": {
+        "regimes": []
+    }
+}
