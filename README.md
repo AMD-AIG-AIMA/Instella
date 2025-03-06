@@ -192,8 +192,8 @@ This codebase is built from [OLMo](https://github.com/allenai/OLMo/tree/main).
 
 ## License
 
-- The Instella-3B models are licensed for academic and research purposes under a ReasearchRAIL license. 
-- The [amd/Instella-GSM8K-synthetic](https://huggingface.co/datasets/amd/Instella-GSM8K-synthetic) dataset used in second stage pre-training is built with Qwen2.5-72B-Instruct, and is licensed for academic and research purposes under a ReasearchRAIL license. Refer to the [LICENSE](https://huggingface.co/datasets/amd/Instella-GSM8K-synthetic/blob/main/LICENSE) and [NOTICES](https://huggingface.co/datasets/amd/Instella-GSM8K-synthetic/blob/main/NOTICES) in the [amd/Instella-GSM8K-synthetic](https://huggingface.co/datasets/amd/Instella-GSM8K-synthetic) dataset card files for more information.
+- The Instella-3B models are licensed for academic and research purposes under a ResearchRAIL license. 
+- The [amd/Instella-GSM8K-synthetic](https://huggingface.co/datasets/amd/Instella-GSM8K-synthetic) dataset used in second stage pre-training is built with Qwen2.5-72B-Instruct, and is licensed for academic and research purposes under a ResearchRAIL license. Refer to the [LICENSE](https://huggingface.co/datasets/amd/Instella-GSM8K-synthetic/blob/main/LICENSE) and [NOTICES](https://huggingface.co/datasets/amd/Instella-GSM8K-synthetic/blob/main/NOTICES) in the [amd/Instella-GSM8K-synthetic](https://huggingface.co/datasets/amd/Instella-GSM8K-synthetic) dataset card files for more information.
 - Refer to the [LICENSE](./LICENSE) and [NOTICES](./NOTICES) files for more information.
 
 ## Citations
