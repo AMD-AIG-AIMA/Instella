@@ -197,13 +197,13 @@ This codebase is built from [OLMo](https://github.com/allenai/OLMo/tree/main).
 - Refer to the [LICENSE](./LICENSE) and [NOTICES](./NOTICES) files for more information.
 
 ## Citations
-Feel free to cite our Instella-3B models:
+Feel free to cite our Instella-3B models and give us a star⭐ if you find our work helpful :)
 
 ```text
 @misc{Instella,
     title = {Instella: Fully Open Language Models with Stellar Performance},
     url = {https://huggingface.co/amd/Instella-3B},
-    author = {Jiang Liu, Jialian Wu, Xiaodong Yu, Prakamya Mishra, Sudhanshu Ranjan, Zicheng Liu, Chaitanya Manem, Yusheng Su, Pratik Prabhanjan Brahma, Gowtham Ramesh, Ximeng Sun, Ze Wang, Emad Barsoum},
+    author = {Jiang Liu and Jialian Wu and Xiaodong Yu and Prakamya Mishra and Sudhanshu Ranjan and Zicheng Liu and Chaitanya Manem and Yusheng Su and Pratik Prabhanjan Brahma and Gowtham Ramesh and Ximeng Sun and Ze Wang and Emad Barsoum},
     month = {March},
     year = {2025}
 }
