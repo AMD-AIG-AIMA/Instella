@@ -28,7 +28,7 @@ To install from source (recommended for training/fine-tuning) run:
 git clone https://github.com/AMD-AIG-AIMA/Instella.git
 cd Instella
 # install Flash-Attention on MI300X
-GPU_ARCH=gfx942 MAX_JOBS=$(nproc) pip install git+https://github.com/Dao-AILab/flash-attention.git -v
+GPU_ARCHS=gfx942 MAX_JOBS=$(nproc) pip install git+https://github.com/Dao-AILab/flash-attention.git -v
 # install other dependencies
 pip install -e .[all]
 ```
