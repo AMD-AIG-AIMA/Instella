@@ -97,7 +97,7 @@ def write_model(checkpoint_dir: str, ignore_instella_compatibility: bool = False
     old_model_path = os.path.join(checkpoint_dir, "model.pt")
     new_model_path = os.path.join(checkpoint_dir, "pytorch_model.bin")
 
-    state_dict = torch.load(old_model_path, map_location="cpu")
+    state_dict = torch.load(old_model_path, map_location="cpu", weights_only=False)
 
     # this takes care of the case where the model was saved with a different prefix,
     # typically due to unsharding.

@@ -309,7 +309,7 @@ def load_state_dict(
             pass
 
     path = resource_path(str(checkpoint_dir).rstrip("/"), fname, local_cache=local_cache)
-    return torch.load(path, map_location=map_location)
+    return torch.load(path, map_location=map_location, weights_only=False)
 
 
 def load_model_state(checkpoint_dir: PathOrStr, model: torch.nn.Module):
@@ -458,7 +458,7 @@ class RemoteFileSystemReader(dist_cp.StorageReader):
             if read_item.type == LoadItemType.BYTE_IO:
                 planner.load_bytes(read_item, bytes)
             else:
-                tensor = cast(torch.Tensor, torch.load(bytes, map_location="cpu"))
+                tensor = cast(torch.Tensor, torch.load(bytes, map_location="cpu", weights_only=False))
                 tensor = narrow_tensor_by_index(tensor, read_item.storage_offsets, read_item.lengths)
                 target_tensor = planner.resolve_tensor(read_item).detach()
 
@@ -1058,7 +1058,7 @@ class TorchLegacyShardedCheckpointer(Checkpointer):
         log.info("Starting unsharding shard number %d to shared memory", shard_number)
 
         with self._patch_sharded_tensor_load():
-            shard = torch.load(shard_filepath, map_location="cpu")
+            shard = torch.load(shard_filepath, map_location="cpu", weights_only=False)
             log.debug("Done loading shard number %d", shard_number)
 
         self._copy_sharded_tensors_to_shared_mem(
@@ -1236,7 +1236,7 @@ class TorchLegacyShardedCheckpointer(Checkpointer):
 
         log.info("Loading a shard on the main process to be unsharded state")
         with self._patch_sharded_tensor_load():
-            state = torch.load(shard_filepaths[0], map_location="cpu")
+            state = torch.load(shard_filepaths[0], map_location="cpu", weights_only=False)
 
         for key in skip_keys:
             if key in state:
@@ -1259,7 +1259,7 @@ class TorchLegacyShardedCheckpointer(Checkpointer):
             for shard_name in input_dir.glob("rank*.pt"):
                 log.info("Loading %s ...", shard_name)
                 shard_number = int(shard_name.name[4:-3])  # shard names look like "rankXX.pt"
-                shards_dict[shard_number] = executor.submit(torch.load, shard_name, map_location="cpu")
+                shards_dict[shard_number] = executor.submit(torch.load, shard_name, map_location="cpu", weights_only=False)
             shards = [None] * len(shards_dict)
             for rank, shard_future in shards_dict.items():
                 shard = shard_future.result()
@@ -1667,7 +1667,7 @@ class LocalShardedCheckpointer(Checkpointer):
         flat_params_data: Dict[int, Dict[str, _FlatParamShard]] = defaultdict(dict)
         for rank, path in enumerate(model_state_paths):
             log.info(f"Loading shards from rank {rank}...")
-            model_state = torch.load(path, map_location="cpu")
+            model_state = torch.load(path, map_location="cpu", weights_only=False)
             for root_fqn, flat_param_shard in self._iter_flat_param_shards(model_state):
                 if root_fqn not in full_model_state:
                     log.info(
@@ -1709,7 +1709,7 @@ class LocalShardedCheckpointer(Checkpointer):
         id_to_fqn: Dict[int, str] = {}
         for rank, path in enumerate(optim_state_paths):
             log.info(f"Loading sharded optim state from rank {rank}...")
-            optim_state = torch.load(path, map_location="cpu")
+            optim_state = torch.load(path, map_location="cpu", weights_only=False)
 
             # Initialize param groups.
             # We assume parameter groups are the same across all ranks.
