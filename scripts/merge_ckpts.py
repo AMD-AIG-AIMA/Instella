@@ -24,7 +24,7 @@ def merge_ckpt_weights(ckpt_paths, save_path, merge_strategy="average"):
         raise ValueError("No checkpoint paths provided.")
 
     # Load all state_dicts
-    state_dicts = [torch.load(path, map_location="cpu", weights_only=False) for path in ckpt_paths]
+    state_dicts = [torch.load(path, map_location="cpu") for path in ckpt_paths]
 
     # Verify all checkpoints have the same structure
     keys = state_dicts[0].keys()
