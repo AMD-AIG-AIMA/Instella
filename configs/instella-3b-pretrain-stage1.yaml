@@ -2184,7 +2184,7 @@ data:
     - datasets/OLMoE-mix-0924-tokenized/pes2o/part-01-00000.npy
     - datasets/OLMoE-mix-0924-tokenized/pes2o/part-01-00001.npy
     - datasets/OLMoE-mix-0924-tokenized/pes2o/part-02-00000.npy
-    - datasets/OLMoE-mix-0924-tokenized/pes2o/part-02-00001.npy
+    #- datasets/OLMoE-mix-0924-tokenized/pes2o/part-02-00001.npy
     - datasets/OLMoE-mix-0924-tokenized/pes2o/part-03-00000.npy
     - datasets/OLMoE-mix-0924-tokenized/pes2o/part-03-00001.npy
     - datasets/OLMoE-mix-0924-tokenized/pes2o/part-04-00000.npy
@@ -2202,7 +2202,7 @@ data:
     - datasets/OLMoE-mix-0924-tokenized/pes2o/part-12-00000.npy
     - datasets/OLMoE-mix-0924-tokenized/pes2o/part-12-00001.npy
     - datasets/OLMoE-mix-0924-tokenized/pes2o/part-13-00000.npy
-    - datasets/OLMoE-mix-0924-tokenized/pes2o/part-13-00001.npy
+    #- datasets/OLMoE-mix-0924-tokenized/pes2o/part-13-00001.npy
     - datasets/OLMoE-mix-0924-tokenized/pes2o/part-14-00000.npy
     - datasets/OLMoE-mix-0924-tokenized/pes2o/part-15-00000.npy
     - datasets/OLMoE-mix-0924-tokenized/pes2o/part-15-00001.npy
