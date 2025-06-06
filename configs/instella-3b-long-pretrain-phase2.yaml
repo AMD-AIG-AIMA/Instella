@@ -1,0 +1,119 @@
+run_name: instella-3b-long-pretrain-phase2
+seed: 6198
+dry_run: false
+
+wandb:
+  name: ${run_name}
+  project: instella-long
+  group: pretrain
+
+model:
+  d_model: 2560
+  n_heads: 32
+  n_layers: 36
+  mlp_hidden_size: 13824
+  weight_tying: false
+  alibi: false
+  rope: true
+  rope_theta: 3691950
+  flash_attention: true  
+  attention_dropout: 0.0
+  attention_layer_norm: true
+  multi_query_attention: false
+  include_bias: false
+  block_type: sequential
+  layer_norm_type: rms
+  layer_norm_with_affine: true
+  bias_for_layer_norm: false
+  attention_layer_norm_with_affine: true
+  activation_type: swiglu
+  residual_dropout: 0.0
+  embedding_dropout: 0.0
+  max_sequence_length: 262144
+  vocab_size: 50280
+  embedding_size: 50304
+  eos_token_id: 0
+  pad_token_id: 1
+  init_device: meta
+  init_fn: mitchell
+
+activation_checkpointing: true
+
+compile:
+  fullgraph: false
+
+optimizer:
+  name: adamw
+  learning_rate: 2.0e-5
+  weight_decay: 0.1
+  decay_norm_and_bias: true
+  decay_embeddings: true
+  eps: 1e-8
+  betas:
+  - 0.9
+  - 0.95
+  metrics_log_interval: 10
+
+scheduler:
+  name: linear_with_warmup
+  t_warmup: 250
+  alpha_f: 0.001
+
+tokenizer:
+  identifier: tokenizers/allenai_eleuther-ai-gpt-neox-20b-pii-special.json
+  truncate_direction: right
+
+save_folder: outputs/${run_name}
+
+save_overwrite: true
+# Sharded checkpoints (best for restarts)
+save_interval: 100
+save_num_checkpoints_to_keep: 9
+# Unsharded checkpoints (for final storage)
+save_interval_unsharded: 100
+save_num_unsharded_checkpoints_to_keep: -1
+
+load_path: outputs/instella-3b-long-pretrain-phase1/step5000-unsharded
+reset_trainer_state: true
+
+max_duration: 2500 # 2500 *8M=20B tokens
+global_train_batch_size: 128 # 128 *256K/4(seq_parallel_size)=8M tokens BS
+device_train_microbatch_size: 1
+
+precision: amp_bf16
+
+fsdp:
+  wrapping_strategy: null
+  precision: mixed
+  sharding_strategy: FULL_SHARD
+
+max_grad_norm: 1.0
+max_grad_norm_ratio: null
+
+speed_monitor:
+  window_size: 20
+
+seq_parallel_size: 4
+
+data:
+  generate_doc_lengths: true
+  dataset_type: StreamingDataset
+  pad_direction: right
+  num_workers: 1
+  drop_last: true
+  pin_memory: true
+  prefetch_factor: 1
+  persistent_workers: true
+  timeout: 0
+  paths:
+    - datasets/Instella-Long/pretrain-phase-2/code-262144@0.2
+    - datasets/Instella-Long/pretrain-phase-2/code-65536@0.1
+    - datasets/Instella-Long/pretrain-phase-2/books-262144@0.15
+    - datasets/Instella-Long/pretrain-phase-2/books-65536@0.15
+    - datasets/Instella-Long/pretrain-phase-2/textbooks@0.02
+    - datasets/Instella-Long/pretrain-phase-2/fineweb-edu@0.1
+    - datasets/Instella-Long/pretrain-phase-2/fineweb@0.1
+    - datasets/Instella-Long/pretrain-phase-2/wikipedia@0.05
+    - datasets/Instella-Long/pretrain-phase-2/openwebmath@0.05
+    - datasets/Instella-Long/pretrain-phase-2/stackexchange@0.04
+    - datasets/Instella-Long/pretrain-phase-2/arxiv@0.04
