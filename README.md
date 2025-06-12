@@ -6,7 +6,7 @@
 <a href='https://rocm.blogs.amd.com/artificial-intelligence/introducing-instella-3B/README.html'><img src='https://img.shields.io/badge/Technical-Blog-red'></a> 
 </div>
 
-Instella is a family of state-of-the-art open language models trained on AMD Instinct™ MI300X GPUs by the AMD GenAI team. Instella models significantly outperform existing fully open language models of similar size, as well as bridges the gap between fully open and open weight models by achieving competitive performance compared to Llama-3.2-3B and Qwen2.5-3B models. We provide the model weights, training code, and training data to accelerate the development of open-source language models. For our vision-language models, please check out [Instella-VL](https://github.com/AMD-AIG-AIMA/InstellaVL). 
+Instella is a family of state-of-the-art open language models trained on AMD Instinct™ MI300X GPUs by the AMD GenAI team. Instella models significantly outperform existing fully open language models of similar size, as well as bridges the gap between fully open and open weight models by achieving competitive performance compared to Llama-3.2-3B and Qwen2.5-3B models. We provide the model weights, training code, and training data to accelerate the development of open-source language models. For our vision-language models, please check out [Instella-VL](https://github.com/AMD-AIG-AIMA/InstellaVL). For our long-context model, please go to [Instella-Long](https://github.com/AMD-AIG-AIMA/Instella/tree/instella-long).
 
 <div align="center">
 <img src="figs/scaling_perf_instruct.png" style="object-fit: contain;"/>
