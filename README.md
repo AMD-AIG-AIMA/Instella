@@ -4,7 +4,7 @@
   <h1>Instella-Long✨: Fully Open Language Model with Long-context Capability</h1>
 <a href='https://huggingface.co/amd/Instella-3B-Long-Instruct'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a>
 <a href='https://huggingface.co/datasets/amd/Instella-Long'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a>
-<!-- <a href='https://rocm.blogs.amd.com/artificial-intelligence/introducing-instella-3B/README.html'><img src='https://img.shields.io/badge/Technical-Blog-red'></a>  -->
+<a href='https://rocm.blogs.amd.com/artificial-intelligence/instella-long-context/README.html'><img src='https://img.shields.io/badge/Technical-Blog-red'></a>
 </div>
 
 Instella-Long is a long-context language model continually trained from [Instella-3B-Instruct](https://huggingface.co/amd/Instella-3B-instruct) on AMD Instinct&trade; MI300X GPUs. Instella-Long can support 128K context length and achieve competitive performance outperforming open-weights models such as Phi-3.5-mini, Gemma-3-4B, and Qwen2.5-3B on the long-context benchmark. We provide the model weights, training code, and training data to accelerate the development of open-source language models.
