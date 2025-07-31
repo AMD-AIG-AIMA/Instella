@@ -169,6 +169,11 @@ def main(opts) -> None:
     elif opts.dataset == "openmathinstruct-2-1M":
         dataset = ds.load_dataset('nvidia/OpenMathInstruct-2', split='train_1M')
         dataset = convert_openmathinstruct(dataset)
+    elif opts.dataset == "openmathinstruct-2":
+        fold = opts.fold
+        split = f'train[{fold*10}%:{(fold+1)*10}%]'
+        dataset = ds.load_dataset('nvidia/OpenMathInstruct-2', split=split)
+        dataset = convert_openmathinstruct(dataset)
     elif opts.dataset == "smoltalk":
         dataset = ds.load_dataset("HuggingFaceTB/smoltalk", "all", split="train")
         remove_columns = ['source', 'messages']
@@ -272,6 +277,7 @@ def get_parser() -> ArgumentParser:
     parser.add_argument("--eos", type=int, help="""EOS token ID.""", default=0)
     parser.add_argument("--pad", type=int, help="""PAD token ID.""", default=1)
     parser.add_argument("--seed", type=int, help="""random seed""", default=96)
+    parser.add_argument("--fold", type=int, help="""dataset fold""", default=0)
     parser.add_argument("-j", "--num-proc", type=int, help="""Number of workers.""", default=8)
     return parser
 
